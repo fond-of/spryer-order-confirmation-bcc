@@ -6,9 +6,9 @@ use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Oms\Business\OmsFacade as BaseOmsFacade;
 
 /**
- * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OmsBusinessFactory getFactory()
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OrderConfirmationBccFacadeBusinessFactory getFactory()
  */
-class OmsFacade extends BaseOmsFacade implements OmsFacadeInterface
+class OrderConfirmationBccFacade extends BaseOmsFacade implements OrderConfirmationBccFacadeInterface
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity

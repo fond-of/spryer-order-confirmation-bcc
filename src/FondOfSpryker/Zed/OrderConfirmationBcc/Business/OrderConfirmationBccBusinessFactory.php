@@ -3,10 +3,13 @@
 namespace FondOfSpryker\Zed\OrderConfirmationBcc\Business;
 
 use FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail\MailHandler;
-use FondOfSpryker\Zed\OrderConfirmationBcc\OmsDependencyProvider;
+use FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccDependencyProvider;
 use Spryker\Zed\Oms\Business\OmsBusinessFactory as BaseOmsBusinessFactory;
 
-class OmsBusinessFactory extends BaseOmsBusinessFactory
+/**
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccConfig getConfig()
+ */
+class OrderConfirmationBccBusinessFactory extends BaseOmsBusinessFactory
 {
     /**
      * @return \FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail\MailHandler
@@ -26,6 +29,6 @@ class OmsBusinessFactory extends BaseOmsBusinessFactory
      */
     protected function getMailFacade()
     {
-        return $this->getProvidedDependency(OmsDependencyProvider::FACADE_MAIL);
+        return $this->getProvidedDependency(OrderConfirmationBccDependencyProvider::FACADE_MAIL);
     }
 }

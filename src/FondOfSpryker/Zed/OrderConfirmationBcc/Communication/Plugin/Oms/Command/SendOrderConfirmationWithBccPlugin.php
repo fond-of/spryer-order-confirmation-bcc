@@ -8,9 +8,9 @@ use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 /**
- * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OmsFacadeInterface getFacade()
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OrderConfirmationBccFacadeInterface getFacade()
  * @method \Spryker\Zed\Oms\Communication\OmsCommunicationFactory getFactory()
- * @method \Spryker\Zed\Oms\OmsConfig getConfig()
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccConfig getConfig()
  * @method \Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface getQueryContainer()
  */
 class SendOrderConfirmationWithBccPlugin extends AbstractPlugin implements CommandByOrderInterface
@@ -26,7 +26,10 @@ class SendOrderConfirmationWithBccPlugin extends AbstractPlugin implements Comma
      */
     public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data)
     {
-        $this->getFacade()->sendOrderConfirmationMailWithBcc($orderEntity, 'max.mustermann@test.com');
+        $this->getFacade()->sendOrderConfirmationMailWithBcc(
+            $orderEntity,
+            $this->getConfig()->getBccEmailAddress()
+        );
 
         return [];
     }

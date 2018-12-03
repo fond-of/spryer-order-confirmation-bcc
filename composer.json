@@ -13,7 +13,7 @@
   "require": {
     "php": ">=7.1",
     "spryker/oms": "~8.4.0",
-    "spryker/mail": "~4.1.0"
+    "spryker/mail": "~4.1.0",
   },
   "require-dev": {
     "spryker/code-sniffer": "^0.11",
