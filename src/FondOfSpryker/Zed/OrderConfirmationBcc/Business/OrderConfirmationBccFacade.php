@@ -12,11 +12,11 @@ class OrderConfirmationBccFacade extends BaseOmsFacade implements OrderConfirmat
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     * @param string|null $bcc
+     * @param array|null $bcc
      *
      * @return void
      */
-    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?string $bcc = null)
+    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?array $bcc = null): void
     {
         $this
             ->getFactory()

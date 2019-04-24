@@ -9,9 +9,9 @@ interface OrderConfirmationBccFacadeInterface extends BaseOmsFacadeInterface
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     * @param string|null $bcc
+     * @param string|null|array $bcc
      *
-     * @return mixed
+     * @return void
      */
-    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?string $bcc = null);
+    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?array $bcc = null): void;
 }

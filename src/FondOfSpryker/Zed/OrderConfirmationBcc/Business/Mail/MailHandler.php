@@ -24,12 +24,12 @@ class MailHandler extends BaseMailHandler
     }
 
     /**
-     * @param \FondOfSpyker\Zed\OrderConfirmationBcc\Business\Mail\SpySalesOrder $salesOrderEntity
-     * @param string|null $bcc
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
+     * @param array|null $bcc
      *
      * @return void
      */
-    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?string $bcc)
+    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?array $bcc): void
     {
         $orderTransfer = $this->getOrderTransfer($salesOrderEntity);
 

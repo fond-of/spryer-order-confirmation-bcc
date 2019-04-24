@@ -7,8 +7,11 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class OrderConfirmationBccConfig extends AbstractBundleConfig
 {
-    public function getBccEmailAddress(): ?string
+    /**
+     * @return array|null
+     */
+    public function getBccEmailAddress(): ?array
     {
-        return $this->get(OrderConfirmationBccContants::BCC_EMAIL_ADDRESS, null);
+        return $this->get(OrderConfirmationBccContants::BCC_EMAIL_ADDRESS, []);
     }
 }
