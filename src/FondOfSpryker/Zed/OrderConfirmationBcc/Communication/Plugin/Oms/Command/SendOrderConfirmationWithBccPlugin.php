@@ -4,16 +4,14 @@ declare(strict_types = 1);
 
 namespace FondOfSpryker\Zed\OrderConfirmationBcc\Communication\Plugin\Oms\Command;
 
-use FondOfSpryker\Zed\OrderConfirmationBcc\Business\OrderConfirmationBccFacadeInterface;
-use FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccConfig;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 /**
- * @method OrderConfirmationBccFacadeInterface getFacade()
- * @method OrderConfirmationBccConfig getConfig()
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OrderConfirmationBccFacadeInterface getFacade()
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccConfig getConfig()
  */
 class SendOrderConfirmationWithBccPlugin extends AbstractPlugin implements CommandByOrderInterface
 {
