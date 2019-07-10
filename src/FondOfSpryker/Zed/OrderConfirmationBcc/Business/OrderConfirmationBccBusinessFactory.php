@@ -1,34 +1,27 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace FondOfSpryker\Zed\OrderConfirmationBcc\Business;
 
 use FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail\MailHandler;
-use FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccDependencyProvider;
-use Spryker\Zed\Oms\Business\OmsBusinessFactory as BaseOmsBusinessFactory;
+use FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail\MailHandlerInterface;
+use FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccConfig;
+use Spryker\Zed\Oms\Business\OmsBusinessFactory as SprykerOmsBusinessFactory;
 
 /**
- * @method \FondOfSpryker\Zed\OrderConfirmationBcc\OrderConfirmationBccConfig getConfig()
+ * @method OrderConfirmationBccConfig getConfig()
  */
-class OrderConfirmationBccBusinessFactory extends BaseOmsBusinessFactory
+class OrderConfirmationBccBusinessFactory extends SprykerOmsBusinessFactory
 {
     /**
-     * @return \FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail\MailHandler
+     * @return \FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail\MailHandlerInterface
      */
-    public function createMailHandler(): MailHandler
+    public function createMailHandler(): MailHandlerInterface
     {
-        $mailHandler = new MailHandler(
+        return new MailHandler(
             $this->getSalesFacade(),
             $this->getMailFacade()
         );
-
-        return $mailHandler;
-    }
-
-    /**
-     * @return mixed|\FondOfSpryker\Zed\OrderConfirmationBcc\Dependency\Facade\OmsToMailInterface
-     */
-    protected function getMailFacade()
-    {
-        return $this->getProvidedDependency(OrderConfirmationBccDependencyProvider::FACADE_MAIL);
     }
 }

@@ -2,12 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace FondOfSpryker\Zed\OrderConfirmationBcc\Business;
+namespace FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
-use Spryker\Zed\Oms\Business\OmsFacadeInterface as SprykerOmsFacadeInterface;
 
-interface OrderConfirmationBccFacadeInterface extends SprykerOmsFacadeInterface
+interface MailHandlerInterface
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity

@@ -1,26 +1,27 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace FondOfSpryker\Zed\OrderConfirmationBcc\Business;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
-use Spryker\Zed\Oms\Business\OmsFacade as BaseOmsFacade;
+use Spryker\Zed\Oms\Business\OmsFacade as SprykerOmsFacade;
 
 /**
- * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OrderConfirmationBccFacadeBusinessFactory getFactory()
+ * @method OrderConfirmationBccBusinessFactory getFactory()
  */
-class OrderConfirmationBccFacade extends BaseOmsFacade implements OrderConfirmationBccFacadeInterface
+class OrderConfirmationBccFacade extends SprykerOmsFacade implements OrderConfirmationBccFacadeInterface
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     * @param array|null $bcc
+     * @param string[] $recipientsBcc
      *
      * @return void
      */
-    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?array $bcc = null): void
+    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, array $recipientsBcc): void
     {
-        $this
-            ->getFactory()
+        $this->getFactory()
             ->createMailHandler()
-            ->sendOrderConfirmationMailWithBcc($salesOrderEntity, $bcc);
+            ->sendOrderConfirmationMailWithBcc($salesOrderEntity, $recipientsBcc);
     }
 }

@@ -1,35 +1,24 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace FondOfSpryker\Zed\OrderConfirmationBcc\Business\Mail;
 
 use FondOfSpryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypePlugin;
-use FondOfSpryker\Zed\OrderConfirmationBcc\Dependency\Facade\OmsToMailInterface;
+use Generated\Shared\Transfer\MailRecipientTransfer;
 use Generated\Shared\Transfer\MailTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
-use Spryker\Zed\Oms\Business\Mail\MailHandler as BaseMailHandler;
-use Spryker\Zed\Oms\Dependency\Facade\OmsToSalesInterface;
+use Spryker\Zed\Oms\Business\Mail\MailHandler as SprykerMailHandler;
 
-class MailHandler extends BaseMailHandler
+class MailHandler extends SprykerMailHandler implements MailHandlerInterface
 {
     /**
-     * MailHandler constructor.
-     *
-     * @param \Spryker\Zed\Oms\Dependency\Facade\OmsToSalesInterface $salesFacade
-     * @param \FondOfSpryker\Zed\OrderConfirmationBcc\Dependency\Facade\OmsToMailInterface $mailFacade
-     */
-    public function __construct(OmsToSalesInterface $salesFacade, OmsToMailInterface $mailFacade)
-    {
-        $this->saleFacade = $salesFacade;
-        $this->mailFacade = $mailFacade;
-    }
-
-    /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     * @param array|null $bcc
+     * @param string[] $recipientsBcc
      *
      * @return void
      */
-    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, ?array $bcc): void
+    public function sendOrderConfirmationMailWithBcc(SpySalesOrder $salesOrderEntity, array $recipientsBcc): void
     {
         $orderTransfer = $this->getOrderTransfer($salesOrderEntity);
 
@@ -38,6 +27,25 @@ class MailHandler extends BaseMailHandler
         $mailTransfer->setType(OrderConfirmationMailTypePlugin::MAIL_TYPE);
         $mailTransfer->setLocale($orderTransfer->getLocale());
 
-        $this->mailFacade->handleMailWithBcc($mailTransfer, $bcc);
+        foreach ($recipientsBcc as $mail => $name) {
+            $mailTransfer->addRecipientBcc(
+                $this->createMailRecipient($mail, $name)
+            );
+        }
+
+        $this->mailFacade->handleMail($mailTransfer);
+    }
+
+    /**
+     * @param string $eMail
+     * @param string|null $name
+     *
+     * @return \Generated\Shared\Transfer\MailRecipientTransfer
+     */
+    protected function createMailRecipient(string $eMail, ?string $name = null): MailRecipientTransfer
+    {
+        return (new MailRecipientTransfer())
+            ->setName($name)
+            ->setEmail($eMail);
     }
 }
