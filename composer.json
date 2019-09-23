@@ -12,7 +12,7 @@
   "prefer-stable": true,
   "require": {
     "php": ">=7.1",
-    "spryker/oms": "^10.3.0",
+    "spryker/oms": "^10.4.0",
     "spryker/mail": "^4.1.1"
   },
   "require-dev": {
