@@ -11,9 +11,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=7.1",
-    "spryker/oms": "^10.4.0",
-    "spryker/mail": "^4.1.1"
+    "php": ">=7.2",
+    "spryker/oms": "^11.1.0",
+    "spryker/mail": "^4.2.0"
   },
   "require-dev": {
     "spryker/code-sniffer": "^0.14.7",
@@ -22,7 +22,7 @@
     "phpro/grumphp": "^0.14",
     "sebastian/phpcpd": "^4.1",
     "php-coveralls/php-coveralls": "^2.0",
-    "spryker/kernel": "^3.37.5",
+    "spryker/kernel": "^3.42.4",
     "spryker/application": "^3.19.0"
   },
   "autoload": {
