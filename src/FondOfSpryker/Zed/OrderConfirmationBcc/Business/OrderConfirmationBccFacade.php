@@ -8,7 +8,7 @@ use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Oms\Business\OmsFacade as SprykerOmsFacade;
 
 /**
- * @method OrderConfirmationBccBusinessFactory getFactory()
+ * @method \FondOfSpryker\Zed\OrderConfirmationBcc\Business\OrderConfirmationBccBusinessFactory getFactory()
  */
 class OrderConfirmationBccFacade extends SprykerOmsFacade implements OrderConfirmationBccFacadeInterface
 {
