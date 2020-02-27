@@ -20,7 +20,8 @@ class OrderConfirmationBccBusinessFactory extends SprykerOmsBusinessFactory
     {
         return new MailHandler(
             $this->getSalesFacade(),
-            $this->getMailFacade()
+            $this->getMailFacade(),
+            $this->getOmsOrderMailExpanderPlugins()
         );
     }
 }
